@@ -11,7 +11,7 @@
 		<spring.version>3.1.1.RELEASE</spring.version>
 		<spring.ws.version>2.0.0.RELEASE</spring.ws.version>
 		<log4j.version>1.2.16</log4j.version>
-		<context.path>spring-webservices-sample</context.path>
+		<context.path>spring-webservices-tutorial-client</context.path>
 	</properties>
 	<build>
 		<plugins>
