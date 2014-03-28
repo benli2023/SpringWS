@@ -5,19 +5,23 @@
 // Generated on: 2014.03.09 at 02:15:02 PM GMT 
 //
 
-
 package com.blog.samples.webservices;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for Account complex type.
+ * <p>
+ * Java class for Account complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="Account">
@@ -38,136 +42,121 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "Account", propOrder = {
-    "accountNumber",
-    "accountName",
-    "accountBalance",
-    "accountStatus",
-    "sortCode"
-})
+@XmlType(name = "Account", propOrder = { "accountNumber", "accountName", "accountBalance", "accountStatus", "sortCode" })
+@Entity
+@Table(name = "Account")
 public class Account {
+	@Id
+	@Column(name = "AccountNumber")
+	@XmlElement(name = "AccountNumber", required = true)
+	protected String accountNumber;
+	@XmlElement(name = "AccountName", required = true)
+	protected String accountName;
+	@XmlElement(name = "AccountBalance")
+	protected double accountBalance;
+	@XmlElement(name = "AccountStatus", required = true)
+	protected EnumAccountStatus accountStatus;
+	@XmlElement(name = "SortCode", required = true)
+	protected String sortCode;
 
-    @XmlElement(name = "AccountNumber", required = true)
-    protected String accountNumber;
-    @XmlElement(name = "AccountName", required = true)
-    protected String accountName;
-    @XmlElement(name = "AccountBalance")
-    protected double accountBalance;
-    @XmlElement(name = "AccountStatus", required = true)
-    protected EnumAccountStatus accountStatus;
-    @XmlElement(name = "SortCode", required = true)
-    protected String sortCode;
+	/**
+	 * Gets the value of the accountNumber property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getAccountNumber() {
+		return accountNumber;
+	}
 
-    /**
-     * Gets the value of the accountNumber property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getAccountNumber() {
-        return accountNumber;
-    }
+	/**
+	 * Sets the value of the accountNumber property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setAccountNumber(String value) {
+		this.accountNumber = value;
+	}
 
-    /**
-     * Sets the value of the accountNumber property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setAccountNumber(String value) {
-        this.accountNumber = value;
-    }
+	/**
+	 * Gets the value of the accountName property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getAccountName() {
+		return accountName;
+	}
 
-    /**
-     * Gets the value of the accountName property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getAccountName() {
-        return accountName;
-    }
+	/**
+	 * Sets the value of the accountName property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setAccountName(String value) {
+		this.accountName = value;
+	}
 
-    /**
-     * Sets the value of the accountName property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setAccountName(String value) {
-        this.accountName = value;
-    }
+	/**
+	 * Gets the value of the accountBalance property.
+	 * 
+	 */
+	public double getAccountBalance() {
+		return accountBalance;
+	}
 
-    /**
-     * Gets the value of the accountBalance property.
-     * 
-     */
-    public double getAccountBalance() {
-        return accountBalance;
-    }
+	/**
+	 * Sets the value of the accountBalance property.
+	 * 
+	 */
+	public void setAccountBalance(double value) {
+		this.accountBalance = value;
+	}
 
-    /**
-     * Sets the value of the accountBalance property.
-     * 
-     */
-    public void setAccountBalance(double value) {
-        this.accountBalance = value;
-    }
+	/**
+	 * Gets the value of the accountStatus property.
+	 * 
+	 * @return possible object is {@link EnumAccountStatus }
+	 * 
+	 */
+	public EnumAccountStatus getAccountStatus() {
+		return accountStatus;
+	}
 
-    /**
-     * Gets the value of the accountStatus property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link EnumAccountStatus }
-     *     
-     */
-    public EnumAccountStatus getAccountStatus() {
-        return accountStatus;
-    }
+	/**
+	 * Sets the value of the accountStatus property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link EnumAccountStatus }
+	 * 
+	 */
+	public void setAccountStatus(EnumAccountStatus value) {
+		this.accountStatus = value;
+	}
 
-    /**
-     * Sets the value of the accountStatus property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link EnumAccountStatus }
-     *     
-     */
-    public void setAccountStatus(EnumAccountStatus value) {
-        this.accountStatus = value;
-    }
+	/**
+	 * Gets the value of the sortCode property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getSortCode() {
+		return sortCode;
+	}
 
-    /**
-     * Gets the value of the sortCode property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getSortCode() {
-        return sortCode;
-    }
-
-    /**
-     * Sets the value of the sortCode property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setSortCode(String value) {
-        this.sortCode = value;
-    }
+	/**
+	 * Sets the value of the sortCode property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setSortCode(String value) {
+		this.sortCode = value;
+	}
 
 }

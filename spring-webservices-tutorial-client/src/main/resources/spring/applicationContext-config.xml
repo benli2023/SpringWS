@@ -15,7 +15,7 @@
 
 	<bean id="webServiceTemplate" class="org.springframework.ws.client.core.WebServiceTemplate">
 		<constructor-arg ref="messageFactory" />
-		<property name="defaultUri" value="http://127.0.0.1:8080/springws/endpoints" />
+		<property name="defaultUri" value="https://www.hsbcgltc.com/springws/endpoints" />
 		<property name="marshaller" ref="jaxb2Marshaller" />
 		<property name="unmarshaller" ref="jaxb2Marshaller" />
 	</bean>

@@ -6,6 +6,7 @@ import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
+import com.blog.samples.dao.AccountDAO;
 import com.blog.samples.services.AccountService;
 import com.blog.samples.webservices.Account;
 import com.blog.samples.webservices.accountservice.AccountDetailsRequest;
@@ -22,6 +23,9 @@ public class AccountServiceEndpoint {
 
 	@Autowired
 	private AccountService accountService_i;
+
+	@Autowired
+	private AccountDAO accountDao;
 
 	/**
 	 * Gets the account details.
@@ -56,6 +60,7 @@ public class AccountServiceEndpoint {
 		long regId = accountService_i.addAccount(request.getAccountDetails());
 		response.setResponseCode("000");
 		response.setRegistrationId(String.valueOf(regId));
+		accountDao.save(request.getAccountDetails());
 		return response;
 	}
 
