@@ -61,6 +61,7 @@ public class AccountServiceEndpoint {
 		response.setResponseCode("000");
 		response.setRegistrationId(String.valueOf(regId));
 		accountDao.save(request.getAccountDetails());
+		System.out.println("=============================================================================================================================");
 		return response;
 	}
 

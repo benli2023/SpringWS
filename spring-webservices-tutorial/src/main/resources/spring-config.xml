@@ -6,14 +6,14 @@
 							http://www.springframework.org/schema/web-services/web-services-2.0.xsd
 							http://www.springframework.org/schema/context
 							http://www.springframework.org/schema/context/spring-context-3.0.xsd
-							http://www.springframework.org/schema/tx 
-							http://www.springframework.org/schema/tx/spring-tx.xsd">
+							http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
 
 
 	<context:component-scan base-package="com.blog.samples" />
 	<sws:annotation-driven />
 
-	<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+
+	<bean id="sqliteSessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
 		<property name="dataSource" ref="myDataSource" />
 		<property name="annotatedClasses">
 			<list>
@@ -29,6 +29,25 @@
 			</props>
 		</property>
 	</bean>
+
+
+	<bean id="hsqlSessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="annotatedClasses">
+			<list>
+				<value>com.blog.samples.webservices.Account</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.HSQLDialect</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.format_sql">true</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+			</props>
+		</property>
+	</bean>
+
 
 	<!-- Our test service bean -->
 	<bean id="AccountDetailsService" class="org.springframework.ws.wsdl.wsdl11.DefaultWsdl11Definition" lazy-init="true">
@@ -52,15 +71,29 @@
 		<constructor-arg value="/WEB-INF/mydb.db" />
 	</bean>
 
+	<bean id="testdb" class="org.springframework.web.context.support.ServletContextResource">
+		<constructor-arg ref="servletContext" />
+		<constructor-arg value="/WEB-INF/hsqldb" />
+	</bean>
+
 	<bean id="myDataSource" class="com.jolbox.bonecp.BoneCPDataSource" destroy-method="close">
 		<property name="driverClass" value="org.sqlite.JDBC" />
 		<property name="jdbcUrl" value="#{'jdbc:sqlite:' + db.file.absolutePath}" />
 	</bean>
 
-	<tx:annotation-driven />
-
-	<bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
-		<property name="sessionFactory" ref="sessionFactory" />
+	<bean id="dataSource" class="com.jolbox.bonecp.BoneCPDataSource">
+		<property name="driverClass" value="org.hsqldb.jdbcDriver" />
+		<property name="jdbcUrl" value="#{'jdbc:hsqldb:file:' + testdb.file.absolutePath+';shutdown=true;hsqldb.write_delay=false;'}" />
+		<property name="username" value="SA" />
+		<property name="password" value="" />
+		<property name="maxConnectionsPerPartition" value="5" />
+		<property name="logStatementsEnabled" value="true" />
 	</bean>
 
+	<tx:annotation-driven transaction-manager="transactionManager" />
+
+	<bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="hsqlSessionFactory" />
+	</bean>
+	
 </beans>

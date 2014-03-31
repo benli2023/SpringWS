@@ -12,6 +12,7 @@
 		<spring.ws.version>2.0.0.RELEASE</spring.ws.version>
 		<log4j.version>1.2.16</log4j.version>
 		<context.path>spring-webservices-sample</context.path>
+		<org.hibernate.version>4.1.7.Final</org.hibernate.version>
 	</properties>
 	<build>
 		<plugins>
@@ -98,7 +99,7 @@
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
-			<version>4.3.4.Final</version>
+			<version>${org.hibernate.version}</version>
 		</dependency>
 	</dependencies>
 </project>

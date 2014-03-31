@@ -1,33 +1,34 @@
 package com.blog.samples.dao.impl;
 
-import javax.transaction.Transactional;
-
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.blog.samples.dao.AccountDAO;
 import com.blog.samples.webservices.Account;
 
-@Transactional
-@Component
+@Repository
+@Transactional(readOnly = true)
 public class AccountDAOImpl implements AccountDAO {
 
 	@Autowired
+	@Qualifier("hsqlSessionFactory")
 	private SessionFactory sessionFactory;
 
+	@Transactional(readOnly = false, propagation = Propagation.REQUIRED)
 	public void save(Account account) {
-		Session session = sessionFactory.openSession();
-		session.saveOrUpdate(account);
+		sessionFactory.getCurrentSession().save(account);
+	}
+
+	public Account get(String accountNumber) {
+		return (Account) sessionFactory.getCurrentSession().get(Account.class, accountNumber);
 	}
 
 	public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}
 
-	public Account get(String accountNumber) {
-		Session session = sessionFactory.openSession();
-		return (Account) session.get(Account.class, accountNumber);
-	}
 }
