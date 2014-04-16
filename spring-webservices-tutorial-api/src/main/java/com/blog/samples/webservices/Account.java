@@ -9,12 +9,19 @@ package com.blog.samples.webservices;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
+
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 
 /**
  * <p>
@@ -47,7 +54,10 @@ import javax.xml.bind.annotation.XmlType;
 @Table(name = "Account")
 public class Account {
 	@Id
-	@Column(name = "AccountNumber")
+	@XmlTransient
+	@GeneratedValue(strategy = GenerationType.TABLE)
+	private long id;
+	@Column(unique = true, nullable = false)
 	@XmlElement(name = "AccountNumber", required = true)
 	protected String accountNumber;
 	@XmlElement(name = "AccountName", required = true)
@@ -58,6 +68,19 @@ public class Account {
 	protected EnumAccountStatus accountStatus;
 	@XmlElement(name = "SortCode", required = true)
 	protected String sortCode;
+
+	@ManyToOne(optional = false)
+	@XmlTransient
+	@Cascade(value = { CascadeType.SAVE_UPDATE })
+	private Customer customer;
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
 
 	/**
 	 * Gets the value of the accountNumber property.
@@ -157,6 +180,14 @@ public class Account {
 	 */
 	public void setSortCode(String value) {
 		this.sortCode = value;
+	}
+
+	public Customer getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
 	}
 
 }
