@@ -2,12 +2,7 @@ package com.blog.samples.dao;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.net.DatagramPacket;
@@ -15,7 +10,6 @@ import java.net.InetAddress;
 import java.net.MulticastSocket;
 import java.net.UnknownHostException;
 import java.text.SimpleDateFormat;
-import java.util.Collection;
 import java.util.Date;
 import java.util.Locale;
 
@@ -29,13 +23,6 @@ import javassist.NotFoundException;
 import javassist.bytecode.AccessFlag;
 import javassist.bytecode.ClassFile;
 import javassist.bytecode.ClassFilePrinter;
-
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.IOUtils;
-import org.apache.commons.io.filefilter.SuffixFileFilter;
-import org.apache.commons.io.filefilter.TrueFileFilter;
-
-import com.yourkit.h.DecrytedInputStream;
 
 public class YourKitCrack {
 
@@ -273,20 +260,20 @@ public class YourKitCrack {
 		}
 	}
 
-	private static void decripted() throws IOException {
-		String dir = "D:\\Program Files\\YourKit Java Profiler 2013 build 13074\\yjp-encryted";
-		SuffixFileFilter suffixFileFilter = new SuffixFileFilter("_");
-		Collection<File> files = FileUtils.listFiles(new File(dir), suffixFileFilter, TrueFileFilter.INSTANCE);
-		for (File file : files) {
-			InputStream in = new DecrytedInputStream(new FileInputStream(file));
-			String newFileName = file.getParentFile().getAbsolutePath() + "/" + file.getName().substring(0, file.getName().length() - 1);
-			OutputStream out = new FileOutputStream(new File(newFileName));
-			IOUtils.copy(in, out);
-			in.close();
-			out.close();
-			file.delete();
-		}
-	}
+	// private static void decripted() throws IOException {
+	// String dir = "D:\\Program Files\\YourKit Java Profiler 2013 build 13074\\yjp-encryted";
+	// SuffixFileFilter suffixFileFilter = new SuffixFileFilter("_");
+	// Collection<File> files = FileUtils.listFiles(new File(dir), suffixFileFilter, TrueFileFilter.INSTANCE);
+	// for (File file : files) {
+	// InputStream in = new DecrytedInputStream(new FileInputStream(file));
+	// String newFileName = file.getParentFile().getAbsolutePath() + "/" + file.getName().substring(0, file.getName().length() - 1);
+	// OutputStream out = new FileOutputStream(new File(newFileName));
+	// IOUtils.copy(in, out);
+	// in.close();
+	// out.close();
+	// file.delete();
+	// }
+	// }
 
 	private static void dump(String className) {
 		ClassFile w = new ClassFile(false, className, null);

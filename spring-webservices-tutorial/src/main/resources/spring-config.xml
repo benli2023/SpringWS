@@ -19,6 +19,23 @@
 			<list>
 				<value>com.blog.samples.webservices.Account</value>
 				<value>com.blog.samples.webservices.Customer</value>
+				<value>com.mobilegz.worldcup.model.Staff</value>
+				<value>com.mobilegz.worldcup.model.Team</value>
+				<value>com.mobilegz.worldcup.model.TeamGoalPrediction</value>
+				<value>com.mobilegz.worldcup.model.WinnerPrediction</value>
+				<value>com.mobilegz.worldcup.model.News</value>
+				<value>com.mobilegz.worldcup.model.MatchGoalPrediction</value>
+				<value>com.mobilegz.worldcup.model.Match</value>
+				<value>com.mobilegz.worldcup.model.InOutCome</value>
+				<value>com.mobilegz.worldcup.model.FootballTeam</value>
+				<value>com.mobilegz.worldcup.model.ChallengeAnswer</value>
+				<value>com.mobilegz.worldcup.model.Challenge</value>
+				<value>com.mobilegz.worldcup.model.BetResult</value>
+				<value>com.mobilegz.worldcup.model.Bet</value>
+				<value>com.mobilegz.worldcup.model.Prediction</value>
+				<value>com.mobilegz.worldcup.model.AbstractModel</value>
+				<value>com.mobilegz.worldcup.model.AbstractAmountFieldModel</value>
+				
 			</list>
 		</property>
 		<property name="hibernateProperties">
@@ -27,6 +44,7 @@
 				<prop key="hibernate.show_sql">true</prop>
 				<prop key="hibernate.format_sql">true</prop>
 				<prop key="hibernate.hbm2ddl.auto">create</prop>
+				<prop key="hibernate.ejb.naming_strategy" >com.blog.samples.services.endpoints.WorldCupNamingStrategy</prop>
 			</props>
 		</property>
 	</bean>
