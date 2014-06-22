@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<!-- saved from url=(0106)http://red-team-design.com/wp-content/uploads/2011/10/practical-css3-tables-with-rounded-corners-demo.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Practical CSS3 tables with rounded corners - demo</title>
+<style>
+
+body {
+    width: 600px;
+    margin: 40px auto;
+    font-family: 'trebuchet MS', 'Lucida sans', Arial;
+    font-size: 14px;
+    color: #444;
+}
+
+table {
+    *border-collapse: collapse; /* IE7 and lower */
+    border-spacing: 0;
+    width: 100%;    
+}
+
+.bordered {
+    border: solid #ccc 1px;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
+    -webkit-box-shadow: 0 1px 1px #ccc; 
+    -moz-box-shadow: 0 1px 1px #ccc; 
+    box-shadow: 0 1px 1px #ccc;         
+}
+
+.bordered tr:hover {
+    background: #fbf8e9;
+    -o-transition: all 0.1s ease-in-out;
+    -webkit-transition: all 0.1s ease-in-out;
+    -moz-transition: all 0.1s ease-in-out;
+    -ms-transition: all 0.1s ease-in-out;
+    transition: all 0.1s ease-in-out;     
+}    
+    
+.bordered td, .bordered th {
+    border-left: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;    
+}
+
+.bordered th {
+    background-color: #dce9f9;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#ebf3fc), to(#dce9f9));
+    background-image: -webkit-linear-gradient(top, #ebf3fc, #dce9f9);
+    background-image:    -moz-linear-gradient(top, #ebf3fc, #dce9f9);
+    background-image:     -ms-linear-gradient(top, #ebf3fc, #dce9f9);
+    background-image:      -o-linear-gradient(top, #ebf3fc, #dce9f9);
+    background-image:         linear-gradient(top, #ebf3fc, #dce9f9);
+    -webkit-box-shadow: 0 1px 0 rgba(255,255,255,.8) inset; 
+    -moz-box-shadow:0 1px 0 rgba(255,255,255,.8) inset;  
+    box-shadow: 0 1px 0 rgba(255,255,255,.8) inset;        
+    border-top: none;
+    text-shadow: 0 1px 0 rgba(255,255,255,.5); 
+}
+
+.bordered td:first-child, .bordered th:first-child {
+    border-left: none;
+}
+
+.bordered th:first-child {
+    -moz-border-radius: 6px 0 0 0;
+    -webkit-border-radius: 6px 0 0 0;
+    border-radius: 6px 0 0 0;
+}
+
+.bordered th:last-child {
+    -moz-border-radius: 0 6px 0 0;
+    -webkit-border-radius: 0 6px 0 0;
+    border-radius: 0 6px 0 0;
+}
+
+.bordered th:only-child{
+    -moz-border-radius: 6px 6px 0 0;
+    -webkit-border-radius: 6px 6px 0 0;
+    border-radius: 6px 6px 0 0;
+}
+
+.bordered tr:last-child td:first-child {
+    -moz-border-radius: 0 0 0 6px;
+    -webkit-border-radius: 0 0 0 6px;
+    border-radius: 0 0 0 6px;
+}
+
+.bordered tr:last-child td:last-child {
+    -moz-border-radius: 0 0 6px 0;
+    -webkit-border-radius: 0 0 6px 0;
+    border-radius: 0 0 6px 0;
+}
+
+
+
+/*----------------------*/
+
+.zebra td, .zebra th {
+    padding: 10px;
+    border-bottom: 1px solid #f2f2f2;    
+}
+
+.zebra tbody tr:nth-child(even) {
+    background: #f5f5f5;
+    -webkit-box-shadow: 0 1px 0 rgba(255,255,255,.8) inset; 
+    -moz-box-shadow:0 1px 0 rgba(255,255,255,.8) inset;  
+    box-shadow: 0 1px 0 rgba(255,255,255,.8) inset;        
+}
+
+.zebra th {
+    text-align: left;
+    text-shadow: 0 1px 0 rgba(255,255,255,.5); 
+    border-bottom: 1px solid #ccc;
+    background-color: #eee;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#f5f5f5), to(#eee));
+    background-image: -webkit-linear-gradient(top, #f5f5f5, #eee);
+    background-image:    -moz-linear-gradient(top, #f5f5f5, #eee);
+    background-image:     -ms-linear-gradient(top, #f5f5f5, #eee);
+    background-image:      -o-linear-gradient(top, #f5f5f5, #eee); 
+    background-image:         linear-gradient(top, #f5f5f5, #eee);
+}
+
+.zebra th:first-child {
+    -moz-border-radius: 6px 0 0 0;
+    -webkit-border-radius: 6px 0 0 0;
+    border-radius: 6px 0 0 0;  
+}
+
+.zebra th:last-child {
+    -moz-border-radius: 0 6px 0 0;
+    -webkit-border-radius: 0 6px 0 0;
+    border-radius: 0 6px 0 0;
+}
+
+.zebra th:only-child{
+    -moz-border-radius: 6px 6px 0 0;
+    -webkit-border-radius: 6px 6px 0 0;
+    border-radius: 6px 6px 0 0;
+}
+
+.zebra tfoot td {
+    border-bottom: 0;
+    border-top: 1px solid #fff;
+    background-color: #f1f1f1;  
+}
+
+.zebra tfoot td:first-child {
+    -moz-border-radius: 0 0 0 6px;
+    -webkit-border-radius: 0 0 0 6px;
+    border-radius: 0 0 0 6px;
+}
+
+.zebra tfoot td:last-child {
+    -moz-border-radius: 0 0 6px 0;
+    -webkit-border-radius: 0 0 6px 0;
+    border-radius: 0 0 6px 0;
+}
+
+.zebra tfoot td:only-child{
+    -moz-border-radius: 0 0 6px 6px;
+    -webkit-border-radius: 0 0 6px 6px
+    border-radius: 0 0 6px 6px
+}
+  
+</style>
+<script async="" src="./Practical CSS3 tables with rounded corners - demo_files/adpacks-demo.js"></script><style type="text/css">				#adpacks-wrapper{font-family: Arial, Helvetica;width:280px;position:fixed;_position: absolute;bottom: 0;right: 5px;z-index: 9999;background: #eee;padding: 15px;box-shadow: 0 0 2px #444;border-radius: 5px 5px 0 0;}				body .adpacks{background:#fff;padding:15px;margin:15px 0 0;border:3px solid #eee;}				body .one .bsa_it_ad{background:transparent;border:none;font-family:inherit;padding:0;margin:0;}/				body .one .bsa_it_ad .bsa_it_i{display:block;padding:0;float:left;margin:0 10px 0 0;}				body .one .bsa_it_ad .bsa_it_i img{padding:0;border:none;}				body .one .bsa_it_ad .bsa_it_t{padding: 0 0 6px 0; font-size: 11px;}				body .one .bsa_it_p{display:none;}				body #bsap_aplink,body #bsap_aplink:hover{display:block;font-size:9px;margin: -20px 0 0 0;text-align:right;}				body .one .bsa_it_ad .bsa_it_d{font-size: 11px;}				body .one{overflow: hidden}				</style><script type="text/javascript" async="" src="./Practical CSS3 tables with rounded corners - demo_files/bsa.js"></script><script type="text/javascript" id="_bsap_js_a5f348233fceef06ba365ab392938d10" src="./Practical CSS3 tables with rounded corners - demo_files/s_a5f348233fceef06ba365ab392938d10.js" async="async"></script><style type="text/css" id="bsa_css">.one{position:relative}.one .bsa_it_ad{display:block;padding:15px;border:1px solid #e1e1e1;background:#f9f9f9;font-family:helvetica,arial,sans-serif;line-height:100%;position:relative}.one .bsa_it_ad a{text-decoration:none}.one .bsa_it_ad a:hover{text-decoration:none}.one .bsa_it_ad .bsa_it_t{display:block;font-size:12px;font-weight:bold;color:#212121;line-height:125%;padding:0 0 5px 0}.one .bsa_it_ad .bsa_it_d{display:block;font-size:11px;color:#434343;font-size:12px;line-height:135%}.one .bsa_it_ad .bsa_it_i{float:left;margin:0 15px 10px 0}.one .bsa_it_p{display:block;text-align:right;position:absolute;bottom:10px;right:15px}.one .bsa_it_p a{font-size:10px;color:#666;text-decoration:none}.one .bsa_it_ad .bsa_it_p a:hover{font-style:italic}</style></head>
+
+<body>
+
+<h2>Highlighted rows, borders</h2>
+<table class="bordered">
+    <thead>
+
+    <tr>
+        <th>#</th>        
+        <th>IMDB Top 10 Movies</th>
+        <th>Year</th>
+    </tr>
+    </thead>
+    <tbody><tr>
+        <td>1</td>        
+        <td>The Shawshank Redemption</td>
+
+        <td>1994</td>
+    </tr>        
+    <tr>
+        <td>2</td>         
+        <td>The Godfather</td>
+        <td>1972</td>
+    </tr>
+    <tr>
+
+        <td>3</td>         
+        <td>The Godfather: Part II</td>
+        <td>1974</td>
+    </tr>    
+    <tr>
+        <td>4</td> 
+        <td>The Good, the Bad and the Ugly</td>
+        <td>1966</td>
+
+    </tr>
+    <tr>
+        <td>5</td> 
+        <td>Pulp Fiction</td>
+        <td>1994</td>
+    </tr>
+    <tr>
+        <td>6</td> 
+        <td>12 Angry Men</td>
+
+        <td>1957</td>
+    </tr>
+    <tr>
+        <td>7</td> 
+        <td>Schindler's List</td>
+        <td>1993</td>
+    </tr>    
+    <tr>
+
+        <td>8</td> 
+        <td>One Flew Over the Cuckoo's Nest</td>
+        <td>1975</td>
+    </tr>
+    <tr>
+        <td>9</td> 
+        <td>The Dark Knight</td>
+
+        <td>2008</td>
+    </tr>
+    <tr>
+        <td>10</td> 
+        <td>The Lord of the Rings: The Return of the King</td>
+        <td>2003</td>
+    </tr> 
+
+</tbody></table>
+
+<br><br>
+
+<h2>Zebra stripes, footer</h2>
+<table class="zebra">
+    <thead>
+    <tr>
+        <th>#</th>        
+        <th>IMDB Top 10 Movies</th>
+        <th>Year</th>
+
+    </tr>
+    </thead>
+    <tfoot>
+    <tr>
+        <td>&nbsp;</td>        
+        <td></td>
+        <td></td>
+    </tr>
+    </tfoot>    
+    <tbody><tr>
+
+        <td>1</td>        
+        <td>The Shawshank Redemption</td>
+        <td>1994</td>
+    </tr>        
+    <tr>
+        <td>2</td>         
+        <td>The Godfather</td>
+        <td>1972</td>
+
+    </tr>
+    <tr>
+        <td>3</td>         
+        <td>The Godfather: Part II</td>
+        <td>1974</td>
+    </tr>    
+    <tr>
+        <td>4</td> 
+        <td>The Good, the Bad and the Ugly</td>
+
+        <td>1966</td>
+    </tr>
+    <tr>
+        <td>5</td> 
+        <td>Pulp Fiction</td>
+        <td>1994</td>
+    </tr>
+
+    <tr>
+        <td>6</td> 
+        <td>12 Angry Men</td>
+        <td>1957</td>
+    </tr>
+    <tr>
+        <td>7</td> 
+        <td>Schindler's List</td>
+
+        <td>1993</td>
+    </tr>    
+    <tr>
+        <td>8</td> 
+        <td>One Flew Over the Cuckoo's Nest</td>
+        <td>1975</td>
+    </tr>
+    <tr>
+
+        <td>9</td> 
+        <td>The Dark Knight</td>
+        <td>2008</td>
+    </tr>
+    <tr>
+        <td>10</td> 
+        <td>The Lord of the Rings: The Return of the King</td>
+
+        <td>2003</td>
+    </tr>
+</tbody></table>
+
+<br>
+    
+<p>Back to <a href="http://red-team-design.com/practical-css3-tables-with-rounded-corners">article</a> / Drop me a message on <a href="http://twitter.com/catalinred">Twitter</a>!</p>
+
+<script src="./Practical CSS3 tables with rounded corners - demo_files/jquery-1.6.3.min.js"></script>
+<!-- BSA AdPacks code -->
+<script>
+(function(){
+  var bsa = document.createElement('script');
+     bsa.async = true;
+     bsa.src = 'http://www.red-team-design.com/js/adpacks-demo.js';
+  (document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(bsa);
+})();
+</script>
+
+
+
+<div id="adpacks-wrapper">    	<div id="bsap_1257097" class="bsap_1257097 bsap"><div class="bsa_it one"><div class="bsa_it_ad ad1 odd" id="bsa_4810593"><a href="http://stats.buysellads.com/click.go?z=1257097&b=4810593&g=&s=&sw=1366&sh=768&br=chrome,21,win&r=0.9849235431756824&link=http://www.hackreactor.com/?utm_source=devcircle&utm_medium=banner&utm_campaign=beorhire" onmouseover="window.status = &#39;http://www.hackreactor.com/?utm_source=devcircle&amp;utm_medium=banner&amp;utm_campaign=beorhire&#39;; return true;" onmouseout="window.status=&#39;&#39;; return true;" target="_blank"><span class="bsa_it_i"><img src="./Practical CSS3 tables with rounded corners - demo_files/225737-1402089056.png" width="130" height="100" alt="Hack Reactor"></span></a><a href="http://stats.buysellads.com/click.go?z=1257097&b=4810593&g=&s=&sw=1366&sh=768&br=chrome,21,win&r=0.7108405190519989&link=http://www.hackreactor.com/?utm_source=devcircle&utm_medium=banner&utm_campaign=beorhire" onmouseover="window.status = &#39;http://www.hackreactor.com/?utm_source=devcircle&amp;utm_medium=banner&amp;utm_campaign=beorhire&#39;; return true;" onmouseout="window.status=&#39;&#39;; return true;" target="_blank"><span class="bsa_it_t">Hack Reactor</span><span class="bsa_it_d">Become a Fullstack JavaScript developer in 12 immersive weeks.</span></a><div style="clear:both"></div></div><span class="bsa_it_p"><a href="https://buysellads.com/buy/detail/40406/zone/1257097?utm_source=site_40406&utm_medium=website&utm_campaign=imagetext&utm_content=zone_1257097" target="_blank">ads by BSA</a></span></div></div>	    <a href="http://adpacks.com/" id="bsap_aplink">via Ad Packs</a>	</div></body></html>
